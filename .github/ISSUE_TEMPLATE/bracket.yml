@@ -1,0 +1,56 @@
+name: Fat Bear Week 2021 bracket
+description: Submit your bracket for Fat Bear Week 2021!
+title: "My Bracket"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out this form to get started with your bracket. Once you've
+        made your first round picks, the bot will ask you to fill out the rest.
+        This will be interactive, all handled within this issue.
+  - type: dropdown
+    id: "1_1"
+    attributes:
+      label: "Round one, matchup #1"
+      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      options:
+        - "Match 1: 2101 Pooh"
+        - "Match 1: 2102 Paddington"
+    validations:
+      required: true
+  - type: dropdown
+    id: "1_2"
+    attributes:
+      label: "Round one, matchup #2"
+      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      options:
+        - "Match 2: 2103 Baloo"
+        - "Match 2: 2104 Boo Boo"
+    validations:
+      required: true
+  - type: dropdown
+    id: "1_3"
+    attributes:
+      label: "Round one, matchup #3"
+      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      options:
+        - "Match 3: 2105 Fozzie"
+        - "Match 3: 2106 Little John"
+    validations:
+      required: true
+  - type: dropdown
+    id: "1_4"
+    attributes:
+      label: "Round one, matchup #4"
+      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      options:
+        - "Match 4: 2107 Teddy Ruxpin"
+        - "Match 4: 2108 Yogi"
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        After you submit this issue, the bot will ask you for the rest of your
+        picks, based on your answers above. It can take a minute for the bot to
+        respond, so please be patient!

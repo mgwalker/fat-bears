@@ -1,0 +1,111 @@
+{
+  "id": "11",
+  "left": {
+    "bear": null,
+    "bracket": {
+      "id": "09",
+      "left": {
+        "bear": null,
+        "bracket": {
+          "id": "05",
+          "left": {
+            "bear": "2109 Gummi",
+            "bracket": null
+          },
+          "right": {
+            "bear": null,
+            "bracket": {
+              "id": "01",
+              "left": {
+                "bear": "2101 Pooh",
+                "bracket": null
+              },
+              "right": {
+                "bear": "2102 Paddington",
+                "bracket": null
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "bear": null,
+        "bracket": {
+          "id": "06",
+          "left": {
+            "bear": "2110 Grizzly",
+            "bracket": null
+          },
+          "right": {
+            "bear": null,
+            "bracket": {
+              "id": "02",
+              "left": {
+                "bear": "2103 Baloo",
+                "bracket": null
+              },
+              "right": {
+                "bear": "2104 Boo Boo",
+                "bracket": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "right": {
+    "bear": null,
+    "bracket": {
+      "id": "10",
+      "left": {
+        "bear": null,
+        "bracket": {
+          "id": "07",
+          "left": {
+            "bear": "2111 Black",
+            "bracket": null
+          },
+          "right": {
+            "bear": null,
+            "bracket": {
+              "id": "03",
+              "left": {
+                "bear": "2105 Fozzie",
+                "bracket": null
+              },
+              "right": {
+                "bear": "2106 Little John",
+                "bracket": null
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "bear": null,
+        "bracket": {
+          "id": "08",
+          "left": {
+            "bear": "2112 Brown",
+            "bracket": null
+          },
+          "right": {
+            "bear": null,
+            "bracket": {
+              "id": "04",
+              "left": {
+                "bear": "2107 Teddy Ruxpin",
+                "bracket": null
+              },
+              "right": {
+                "bear": "2108 Yogi",
+                "bracket": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
