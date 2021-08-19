@@ -1,0 +1,21 @@
+name: issue created
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  query:
+    name: issue conversation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
+        with:
+          node-version: 14
+          cache: npm
+      - run: |
+          npm install @octokit/rest
+      - run: node ./.github/workflows/converse.js ${{ github.event.issue.number }}
