@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@actions/exec": "^1.1.0",
+    "@octokit/rest": "^18.10.0",
+    "jsonpath": "^1.1.1"
+  },
+  "prettier": {}
+}

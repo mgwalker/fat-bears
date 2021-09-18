@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta encoding="utf-8" />
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+      }
+
+      div#bracket div {
+        height: 40px;
+        min-width: 200px;
+        position: absolute;
+      }
+
+      div#match_01_winner {
+        left: 480px;
+        top: 180px;
+      }
+
+      div#match_02_winner {
+        left: 480px;
+        top: 1040px;
+      }
+
+      div#match_03_winner {
+        left: 1470px;
+        top: 180px;
+      }
+
+      div#match_04_winner {
+        left: 1470px;
+        top: 1040px;
+      }
+
+      div#match_05_winner {
+        left: 670px;
+        top: 410px;
+      }
+
+      div#match_06_winner {
+        left: 670px;
+        top: 830px;
+      }
+
+      div#match_07_winner {
+        left: 1220px;
+        top: 410px;
+      }
+
+      div#match_08_winner {
+        left: 1220px;
+        top: 830px;
+      }
+
+      div#match_09_winner {
+        left: 900px;
+        top: 480px;
+      }
+
+      div#match_10_winner {
+        left: 970px;
+        top: 750px;
+      }
+
+      div#match_11_winner {
+        font-size: 2em;
+        left: 850px;
+        top: 1100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bracket">
+      <div id="match_01_winner"></div>
+      <div id="match_02_winner"></div>
+      <div id="match_03_winner"></div>
+      <div id="match_04_winner"></div>
+      <div id="match_05_winner"></div>
+      <div id="match_06_winner"></div>
+      <div id="match_07_winner"></div>
+      <div id="match_08_winner"></div>
+      <div id="match_09_winner"></div>
+      <div id="match_10_winner"></div>
+      <div id="match_11_winner"></div>
+
+      <!-- 2100 x 1458 -->
+      <img src="bracket.jpg" />
+    </div>
+    <script type="text/javascript">
+      window.setWinners = (winners) => {
+        // Clear anything that previously existed
+        Array.from(document.querySelectorAll("#brackets div")).forEach(
+          (el) => (el.innerText = "")
+        );
+
+        Object.entries(winners).forEach(([match, bear]) => {
+          console.log(`match ${match}: ${bear}`);
+          const el = document.querySelector(`#match_${match}_winner`);
+          if (el) {
+            el.innerText = bear;
+          }
+        });
+      };
+
+      setWinners({
+        10: "2111 Black",
+        11: "2109 Gummi",
+        "08": "2112 Brown",
+        "04": "2107 Teddy Ruxpin",
+        "07": "2111 Black",
+        "03": "2105 Fozzie",
+        "09": "2109 Gummi",
+        "06": "2110 Grizzly",
+        "02": "2103 Baloo",
+        "05": "2109 Gummi",
+        "01": "2101 Pooh",
+      });
+    </script>
+  </body>
+</html>
