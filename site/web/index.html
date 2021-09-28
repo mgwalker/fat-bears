@@ -11,6 +11,10 @@
         padding: 0;
       }
 
+      div#bracket {
+        width: 2100px;
+      }
+
       div#bracket div {
         height: 40px;
         min-width: 200px;
@@ -18,59 +22,62 @@
       }
 
       div#match_01_winner {
-        left: 480px;
-        top: 180px;
+        left: 490px;
+        top: 220px;
       }
 
       div#match_02_winner {
-        left: 480px;
-        top: 1040px;
+        left: 490px;
+        top: 990px;
       }
 
       div#match_03_winner {
-        left: 1470px;
-        top: 180px;
+        left: 1450px;
+        top: 220px;
       }
 
       div#match_04_winner {
-        left: 1470px;
-        top: 1040px;
+        left: 1450px;
+        top: 990px;
       }
 
       div#match_05_winner {
-        left: 670px;
-        top: 410px;
+        left: 680px;
+        top: 390px;
       }
 
       div#match_06_winner {
-        left: 670px;
-        top: 830px;
+        left: 680px;
+        top: 810px;
       }
 
       div#match_07_winner {
-        left: 1220px;
-        top: 410px;
+        left: 1250px;
+        top: 390px;
       }
 
       div#match_08_winner {
-        left: 1220px;
-        top: 830px;
+        left: 1250px;
+        top: 810px;
       }
 
       div#match_09_winner {
-        left: 900px;
-        top: 480px;
+        left: 870px;
+        top: 450px;
       }
 
       div#match_10_winner {
-        left: 970px;
+        left: 1020px;
         top: 750px;
       }
 
       div#match_11_winner {
-        font-size: 2em;
-        left: 850px;
-        top: 1100px;
+        font-size: 3em;
+        left: 750px;
+        line-height: 0.8em;
+        min-width: 600px !important;
+        text-align: center;
+        top: 1050px;
       }
     </style>
   </head>
@@ -88,7 +95,7 @@
       <div id="match_10_winner"></div>
       <div id="match_11_winner"></div>
 
-      <!-- 2100 x 1458 -->
+      <!-- 2100 x 1456 -->
       <img src="bracket.jpg" />
     </div>
     <script type="text/javascript">
@@ -106,20 +113,6 @@
           }
         });
       };
-
-      setWinners({
-        10: "2111 Black",
-        11: "2109 Gummi",
-        "08": "2112 Brown",
-        "04": "2107 Teddy Ruxpin",
-        "07": "2111 Black",
-        "03": "2105 Fozzie",
-        "09": "2109 Gummi",
-        "06": "2110 Grizzly",
-        "02": "2103 Baloo",
-        "05": "2109 Gummi",
-        "01": "2101 Pooh",
-      });
     </script>
   </body>
 </html>
