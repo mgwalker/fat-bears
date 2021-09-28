@@ -16,8 +16,9 @@ body:
   - type: dropdown
     id: "1_1"
     attributes:
-      label: "Round one, matchup #1"
-      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      label: "Who do you think will win"
+      description: |
+        <img src="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" alt="32 Chunk" width="40%" valign="middle"> **vs.** <img src="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" alt="32 Chunk" width="40%" valign="middle">
       options:
         - "Match 1: 2101 Pooh"
         - "Match 1: 2102 Paddington"
