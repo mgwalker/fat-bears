@@ -11,42 +11,45 @@ body:
   - type: dropdown
     id: "1_1"
     attributes:
-      label: "Round one, match 1: Chunk vs. Chunk"
+      label: "Round one, match 1: 128 Grazer vs. 435 Holly"
       description: |
-        <img src="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" alt="32 Chunk" width="40%" valign="middle"> **vs.** <img src="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" alt="32 Chunk" width="40%" valign="middle">
+        <img src="https://media.explore.org/documents/128grazer-beforeafter-1632778787221.png" alt="128 Grazer" width="40%" valign="middle"> **vs.** <img src="https://media.explore.org/documents/435holly-beforeafter-1632778278471.png" alt="435 Holly" width="40%" valign="middle">
       options:
-        - "Match 1: 2101 Pooh"
-        - "Match 1: 2102 Paddington"
+        - "Match 1: 128 Grazer"
+        - "Match 1: 435 Holly"
     validations:
       required: true
   - type: dropdown
     id: "1_2"
     attributes:
-      label: "Round one, matchup #2"
-      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      label: "Round one, match 2: 634 Popeye vs. 151 Walker"
+      description: |
+        <img src="https://media.explore.org/documents/634-beforeafter-1632778360782.png" alt="634 Popeye" width="40%" valign="middle"> **vs.** <img src="https://media.explore.org/documents/151walker-beforeafter-1632778228964.png" alt="151 Walker" width="40%" valign="middle">
       options:
-        - "Match 2: 2103 Baloo"
-        - "Match 2: 2104 Boo Boo"
+        - "Match 2: 634 Popeye"
+        - "Match 2: 151 Walker"
     validations:
       required: true
   - type: dropdown
     id: "1_3"
     attributes:
-      label: "Round one, matchup #3"
-      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      label: "Round one, match 3: 812 vs. 131"
+      description: |
+        <img src="https://media.explore.org/documents/812-beforeafter-1632778421957.png" alt="812" width="40%" valign="middle"> **vs.** <img src="https://media.explore.org/documents/131-beforeafter-1632778809698.png" alt="131" width="40%" valign="middle">
       options:
-        - "Match 3: 2105 Fozzie"
-        - "Match 3: 2106 Little John"
+        - "Match 3: 812"
+        - "Match 3: 131"
     validations:
       required: true
   - type: dropdown
     id: "1_4"
     attributes:
-      label: "Round one, matchup #4"
-      description: "Who do you think will win between *32 Chunk* and *128 Grazer*?"
+      label: "Round one, match 4: 402 vs. 480 Otis"
+      description: |
+        <img src="https://media.explore.org/documents/402-beforeafter-1632778251877.png" alt="402" width="40%" valign="middle"> **vs.** <img src="https://media.explore.org/documents/480otis-beforeafter-1632778305141.png" alt="480 Otis" width="40%" valign="middle">
       options:
-        - "Match 4: 2107 Teddy Ruxpin"
-        - "Match 4: 2108 Yogi"
+        - "Match 4: 402"
+        - "Match 4: 480 Otis"
     validations:
       required: true
   - type: markdown

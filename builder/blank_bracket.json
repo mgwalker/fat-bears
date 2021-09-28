@@ -9,7 +9,7 @@
         "bracket": {
           "id": "05",
           "left": {
-            "bear": "2109 Gummi",
+            "bear": "132's Spring Cub",
             "bracket": null
           },
           "right": {
@@ -17,11 +17,11 @@
             "bracket": {
               "id": "01",
               "left": {
-                "bear": "2101 Pooh",
+                "bear": "128 Grazer",
                 "bracket": null
               },
               "right": {
-                "bear": "2102 Paddington",
+                "bear": "435 Holly",
                 "bracket": null
               }
             }
@@ -33,7 +33,7 @@
         "bracket": {
           "id": "06",
           "left": {
-            "bear": "2110 Grizzly",
+            "bear": "32 Chunk",
             "bracket": null
           },
           "right": {
@@ -41,11 +41,11 @@
             "bracket": {
               "id": "02",
               "left": {
-                "bear": "2103 Baloo",
+                "bear": "634 Popeye",
                 "bracket": null
               },
               "right": {
-                "bear": "2104 Boo Boo",
+                "bear": "151 Walker",
                 "bracket": null
               }
             }
@@ -63,7 +63,7 @@
         "bracket": {
           "id": "07",
           "left": {
-            "bear": "2111 Black",
+            "bear": "503",
             "bracket": null
           },
           "right": {
@@ -71,11 +71,11 @@
             "bracket": {
               "id": "03",
               "left": {
-                "bear": "2105 Fozzie",
+                "bear": "812",
                 "bracket": null
               },
               "right": {
-                "bear": "2106 Little John",
+                "bear": "131",
                 "bracket": null
               }
             }
@@ -87,7 +87,7 @@
         "bracket": {
           "id": "08",
           "left": {
-            "bear": "2112 Brown",
+            "bear": "747",
             "bracket": null
           },
           "right": {
@@ -95,11 +95,11 @@
             "bracket": {
               "id": "04",
               "left": {
-                "bear": "2107 Teddy Ruxpin",
+                "bear": "402",
                 "bracket": null
               },
               "right": {
-                "bear": "2108 Yogi",
+                "bear": "480 Otis",
                 "bracket": null
               }
             }
