@@ -7,15 +7,39 @@ on:
     types: [created]
 
 jobs:
-  thing:
+  conversation:
     name: issue conversation
     runs-on: ubuntu-latest
-
+    outputs:
+      done: steps.build.outputs.done
     defaults:
       run:
         working-directory: ./.github/workflows
-
     steps:
-      - uses: docker://mgwalker/fat-bear-bracketeer
+      - id: build
+        uses: docker://mgwalker/fat-bear-bracketeer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build site:
+    needs: [conversation]
+    if: ${{ jobs.conversation.outputs.done === 'yes' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
+        with:
+          node-version: 16
+      - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+      - name: install dependencies
+        working-directory: ./site
+        run: npm install
+      - name: build images
+        working-directory: ./site
+        run: node main.js
+      - name: update the site
+        working-directory: ./site
+        run: node pages.js
+      - name: commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./.github/workflows/update-site.sh

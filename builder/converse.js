@@ -246,6 +246,7 @@ const main = async () => {
         lock_reason: "resolved",
       }),
     ]);
+    console.log("::set-output name=done::yes");
   } else {
     const images = await getImages();
 
@@ -268,6 +269,7 @@ const main = async () => {
 <sub>Match ${nextMatch.id}</sub>`,
       }
     );
+    console.log("::set-output name=done::no");
   }
 };
 main();
