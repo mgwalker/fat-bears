@@ -6,12 +6,41 @@ const path = require("path");
 
 const BOT_USER = "github-actions[bot]";
 
+const getImages = async () => {
+  let bracket = JSON.parse(
+    await fs.readFile(path.join(__dirname, "blank_bracket.json"), {
+      encoding: "utf-8",
+    })
+  );
+
+  const bears = new Map();
+  const brackets = [bracket];
+
+  while (brackets.length) {
+    const b = brackets.pop();
+    if (b.left.bear) {
+      bears.set(b.left.bear, b.left.image);
+    } else {
+      brackets.push(b.left.bracket);
+    }
+
+    if (b.right.bear) {
+      bears.set(b.right.bear, b.right.image);
+    } else {
+      brackets.push(b.right.bracket);
+    }
+  }
+
+  return bears;
+};
+
 const buildBracket = async (comments) => {
   let bracket = JSON.parse(
     await fs.readFile(path.join(__dirname, "blank_bracket.json"), {
       encoding: "utf-8",
     })
   );
+
   const fields = ["match", "winner"];
 
   const regex = /Match (\d+): (.+)/;
@@ -35,7 +64,6 @@ const buildBracket = async (comments) => {
         champion,
       };
     } else {
-      console.log(`for match ${pick.match}, user chose ${pick.winner}`);
       // Find the bracket whose ID is equal to the match number
       const { path } = jsonpath.nodes(
         bracket,
@@ -219,6 +247,8 @@ const main = async () => {
       }),
     ]);
   } else {
+    const images = await getImages();
+
     // If there's no champion yet, post a message asking the user for their pick
     // in the next matchup.
     await github.request(
@@ -229,11 +259,11 @@ const main = async () => {
 * ${nextMatch.left.bear}
 * ${nextMatch.right.bear}
 
-<img src="${nextMatch.left.image}" alt="${
+<img src="${images.get(nextMatch.left.bear)}" alt="${
           nextMatch.left.bear
-        }" width="40%" valign="middle"> **vs.** <img src="${
-          nextMatch.right.image
-        }" alt="${nextMatch.right.bear}" width="40%" valign="middle">
+        }" width="40%" valign="middle"> **vs.** <img src="${images.get(
+          nextMatch.right.bear
+        )}" alt="${nextMatch.right.bear}" width="40%" valign="middle">
 
 <sub>Match ${nextMatch.id}</sub>`,
       }
