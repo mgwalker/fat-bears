@@ -2,6 +2,7 @@ const exec = require("@actions/exec");
 const fs = require("fs/promises");
 const { Octokit } = require("@octokit/rest");
 const jsonpath = require("jsonpath");
+const os = require("os");
 const path = require("path");
 
 const BOT_USER = "github-actions[bot]";
@@ -123,6 +124,13 @@ const getNextMatch = (bracket) => {
   // If all of the brackets have defined winners, then return the whole bracket
   // because there's not a next match.
   return bracket;
+};
+
+const outputDone = (done) => {
+  process.stdout.write(os.EOL);
+  process.stdout.write(
+    `::set-output name=done::${done ? "yes" : "no"}${os.EOL}`
+  );
 };
 
 const main = async () => {
@@ -250,8 +258,6 @@ const main = async () => {
         lock_reason: "resolved",
       }
     );
-
-    console.log("::set-output name=done::yes");
   } else {
     const images = await getImages();
 
@@ -274,7 +280,8 @@ const main = async () => {
 <sub>Match ${nextMatch.id}</sub>`,
       }
     );
-    console.log("::set-output name=done::no");
   }
+
+  outputDone(!!nextMatch.champion);
 };
 main();
