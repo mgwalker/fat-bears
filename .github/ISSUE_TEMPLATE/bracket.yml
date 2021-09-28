@@ -12,7 +12,7 @@ body:
     attributes:
       value: |
         # Round one, matchup #1
-        ![32 Chunk](https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png)
+        <img src="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" alt="32 Chunk" width="100">
   - type: dropdown
     id: "1_1"
     attributes:
