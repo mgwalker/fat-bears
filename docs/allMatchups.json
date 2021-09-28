@@ -2,7 +2,8 @@
   "10": {
     "747": [
       "rrefoy",
-      "jpyuda"
+      "jpyuda",
+      "tBaxter"
     ],
     "480 Otis": [
       "mgwalker",
@@ -11,6 +12,9 @@
     ]
   },
   "11": {
+    "747": [
+      "tBaxter"
+    ],
     "480 Otis": [
       "mgwalker",
       "carodew",
@@ -24,7 +28,8 @@
   "08": {
     "747": [
       "rrefoy",
-      "jpyuda"
+      "jpyuda",
+      "tBaxter"
     ],
     "480 Otis": [
       "mgwalker",
@@ -33,6 +38,9 @@
     ]
   },
   "04": {
+    "402": [
+      "tBaxter"
+    ],
     "480 Otis": [
       "mgwalker",
       "rrefoy",
@@ -49,7 +57,8 @@
     ],
     "812": [
       "rrefoy",
-      "ertzeid"
+      "ertzeid",
+      "tBaxter"
     ]
   },
   "03": {
@@ -58,7 +67,8 @@
       "rrefoy",
       "jpyuda",
       "carodew",
-      "ertzeid"
+      "ertzeid",
+      "tBaxter"
     ]
   },
   "09": {
@@ -69,7 +79,8 @@
       "carodew"
     ],
     "132's Spring Cub": [
-      "ertzeid"
+      "ertzeid",
+      "tBaxter"
     ]
   },
   "06": {
@@ -79,6 +90,9 @@
       "jpyuda",
       "carodew",
       "ertzeid"
+    ],
+    "32 Chunk": [
+      "tBaxter"
     ]
   },
   "02": {
@@ -87,7 +101,8 @@
       "rrefoy",
       "jpyuda",
       "carodew",
-      "ertzeid"
+      "ertzeid",
+      "tBaxter"
     ]
   },
   "05": {
@@ -100,13 +115,15 @@
       "carodew"
     ],
     "132's Spring Cub": [
-      "ertzeid"
+      "ertzeid",
+      "tBaxter"
     ]
   },
   "01": {
     "128 Grazer": [
       "mgwalker",
-      "ertzeid"
+      "ertzeid",
+      "tBaxter"
     ],
     "435 Holly": [
       "rrefoy",
