@@ -10,7 +10,8 @@
           "id": "05",
           "left": {
             "bear": "132's Spring Cub",
-            "bracket": null
+            "bracket": null,
+            "image": "https://media.explore.org/documents/132-spring-cub-beforeafter-1632778196432.png"
           },
           "right": {
             "bear": null,
@@ -18,11 +19,13 @@
               "id": "01",
               "left": {
                 "bear": "128 Grazer",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/128grazer-beforeafter-1632778787221.png"
               },
               "right": {
                 "bear": "435 Holly",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/435holly-beforeafter-1632778278471.png"
               }
             }
           }
@@ -34,7 +37,8 @@
           "id": "06",
           "left": {
             "bear": "32 Chunk",
-            "bracket": null
+            "bracket": null,
+            "image": "https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png"
           },
           "right": {
             "bear": null,
@@ -42,11 +46,13 @@
               "id": "02",
               "left": {
                 "bear": "634 Popeye",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/634-beforeafter-1632778360782.png"
               },
               "right": {
                 "bear": "151 Walker",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/151walker-beforeafter-1632778228964.png"
               }
             }
           }
@@ -64,7 +70,8 @@
           "id": "07",
           "left": {
             "bear": "503",
-            "bracket": null
+            "bracket": null,
+            "image": "https://media.explore.org/documents/503-beforeafter-1632778334865.png"
           },
           "right": {
             "bear": null,
@@ -72,11 +79,13 @@
               "id": "03",
               "left": {
                 "bear": "812",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/812-beforeafter-1632778421957.png"
               },
               "right": {
                 "bear": "131",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/131-beforeafter-1632778809698.png"
               }
             }
           }
@@ -88,7 +97,8 @@
           "id": "08",
           "left": {
             "bear": "747",
-            "bracket": null
+            "bracket": null,
+            "image": "https://media.explore.org/documents/747-beforeafter-1632778384653.png"
           },
           "right": {
             "bear": null,
@@ -96,11 +106,13 @@
               "id": "04",
               "left": {
                 "bear": "402",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/402-beforeafter-1632778251877.png"
               },
               "right": {
                 "bear": "480 Otis",
-                "bracket": null
+                "bracket": null,
+                "image": "https://media.explore.org/documents/480otis-beforeafter-1632778305141.png"
               }
             }
           }

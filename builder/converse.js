@@ -228,6 +228,12 @@ const main = async () => {
 * ${nextMatch.left.bear}
 * ${nextMatch.right.bear}
 
+<img src="${nextMatch.left.image}" alt="${
+          nextMatch.left.bear
+        }" width="40%" valign="middle"> **vs.** <img src="${
+          nextMatch.right.image
+        }" alt="${nextMatch.right.bear}" width="40%" valign="middle">
+
 <sub>Match ${nextMatch.id}</sub>`,
       }
     );
