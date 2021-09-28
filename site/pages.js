@@ -58,13 +58,21 @@ const pages = async () => {
   </tr>
   <tr>
     <td class="left-picks" rowspan="2">
-      ${left.picks.join("<br/>")}
+      ${left.picks
+        .map((u) =>
+          u === "nobody" ? "nobody" : `<a href="brackets/${u}.png">${u}</a>`
+        )
+        .join("<br/>")}
     </td>
     <td class="bear">${left.bear}</td>
     <td class="vs" rowspan="2">vs.</td>
     <td class="bear">${right.bear}</td>
     <td class="right-picks" rowspan="2">
-      ${right.picks.join("<br/>")}
+      ${right.picks
+        .map((u) =>
+          u === "nobody" ? "nobody" : `<a href="brackets/${u}.png">${u}</a>`
+        )
+        .join("<br/>")}
     </td>
   </tr>
   <tr>
