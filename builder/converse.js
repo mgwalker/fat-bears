@@ -35,6 +35,7 @@ const buildBracket = async (comments) => {
         champion,
       };
     } else {
+      console.log(`for match ${pick.match}, user chose ${pick.winner}`);
       // Find the bracket whose ID is equal to the match number
       const { path } = jsonpath.nodes(
         bracket,
