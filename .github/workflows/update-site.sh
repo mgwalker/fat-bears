@@ -3,6 +3,8 @@
 if [[ `git status --porcelain` ]]
 then
   echo "committing and pushing changes"
+  pwd
+  git status
   git config --local user.email "mgwalker@users.noreply.github.com"
   git config --local user.name "automatic update"
   git add ./docs
