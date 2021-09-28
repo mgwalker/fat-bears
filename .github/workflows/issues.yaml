@@ -34,11 +34,9 @@ jobs:
         working-directory: ./site
         run: npm install
       - name: build images
-        working-directory: ./site
-        run: node main.js
+        run: node site/main.js
       - name: update the site
-        working-directory: ./site
-        run: node pages.js
+        run: node site/pages.js
       - name: commit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
