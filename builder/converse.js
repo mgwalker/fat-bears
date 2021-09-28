@@ -232,20 +232,25 @@ const main = async () => {
     }
 
     // Comment an acknowledgement to the issue, then close and lock it.
-    await Promise.all([
-      github.request(
-        `POST /repos/${owner}/${repo}/issues/${issueNumber}/comments`,
-        {
-          body: `Great! All done! Good luck to **${nextMatch.champion}** to win it all!`,
-        }
-      ),
-      github.request(`PATCH /repos/${owner}/${repo}/issues/${issueNumber}`, {
+    await github.request(
+      `POST /repos/${owner}/${repo}/issues/${issueNumber}/comments`,
+      {
+        body: `Great! All done! Good luck to **${nextMatch.champion}** to win it all!`,
+      }
+    );
+    await github.request(
+      `PATCH /repos/${owner}/${repo}/issues/${issueNumber}`,
+      {
         state: "closed",
-      }),
-      github.request(`PUT /repos/${owner}/${repo}/issues/${issueNumber}/lock`, {
+      }
+    );
+    await github.request(
+      `PUT /repos/${owner}/${repo}/issues/${issueNumber}/lock`,
+      {
         lock_reason: "resolved",
-      }),
-    ]);
+      }
+    );
+
     console.log("::set-output name=done::yes");
   } else {
     const images = await getImages();
