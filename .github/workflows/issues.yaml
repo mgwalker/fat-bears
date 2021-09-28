@@ -38,6 +38,4 @@ jobs:
       - name: update the site
         run: node site/pages.js
       - name: commit
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./.github/workflows/update-site.sh
+        run: node site/git.js
