@@ -70,10 +70,10 @@ const pages = async () => {
   <tr>
     <td class="img img-left"><img src="bears/${left.bear
       .toLowerCase()
-      .replace(/\s/g, "_")}.png"></td>
+      .replace(/[\s']/g, "_")}.png"></td>
     <td class="img img-right"><img src="bears/${right.bear
       .toLowerCase()
-      .replace(/\s/g, "_")}.png"></td>
+      .replace(/[\s']/g, "_")}.png"></td>
 `
     )
     .join("\n");
