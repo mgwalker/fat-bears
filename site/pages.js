@@ -26,11 +26,9 @@ const pages = async () => {
           id: bracket.bracket.id,
           left: {
             bear: bracket.bracket.left.bear,
-            picks: [
-              matchups[bracket.bracket.id]?.[bracket.bracket.left.bear] ?? [
-                "nobody",
-              ],
-            ],
+            picks: matchups[bracket.bracket.id]?.[
+              bracket.bracket.left.bear
+            ] ?? ["nobody"],
           },
           right: {
             bear: bracket.bracket.right.bear,
