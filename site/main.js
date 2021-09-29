@@ -15,11 +15,6 @@ const exists = async (path) => {
   }
 };
 
-// 128 vs 435, winner takes on 132 cub,
-// 634 vs 151 winner takes on 32
-// 812 vs 131 winner takes on 503
-// 402 vs 480 winner takes on 747
-
 (async () => {
   let browser;
   try {

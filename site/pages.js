@@ -5,12 +5,48 @@ import { fileURLToPath } from "url";
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const docs = path.join(DIR, "..", "docs");
 
+const percent = Intl.NumberFormat("en-US", { style: "percent" });
+
 const getJSON = async (path) =>
   JSON.parse(await fs.readFile(path, { encoding: "utf-8" }));
 
 const pages = async () => {
   const bracket = await getJSON(path.join(docs, "bracket.json"));
   const matchups = await getJSON(path.join(docs, "allMatchups.json"));
+
+  const winners = [];
+  const queue = [bracket.bracket.left, bracket.bracket.right];
+  if (bracket.champion) {
+    const match = bracket.bracket.id;
+    winners.push([match, bracket.champion]);
+    queue.push(bracket.bracket.left, bracket.bracket.right);
+  }
+
+  while (queue.length) {
+    const target = queue.pop();
+    if (target.bracket) {
+      if (target.bear) {
+        winners.push([target.bracket.id, target.bear]);
+      }
+      queue.push(target.bracket.left, target.bracket.right);
+    }
+  }
+
+  const winPercentage = {};
+  winners.forEach(([match, bear]) => {
+    const people = matchups[match]?.[bear];
+
+    people.forEach((person) => {
+      if (!winPercentage[person]) {
+        winPercentage[person] = 0;
+      }
+      winPercentage[person] += 1;
+    });
+  });
+
+  Object.entries(winPercentage).forEach(([user, wins]) => {
+    winPercentage[user] = percent.format(wins / winners.length);
+  });
 
   const undecided = [];
   if (!bracket.champion) {
@@ -38,8 +74,7 @@ const pages = async () => {
           },
         });
       } else if (bracket.bracket) {
-        brackets.push(bracket.bracket.left);
-        brackets.push(bracket.bracket.right);
+        brackets.push(bracket.bracket.left, bracket.bracket.right);
       }
     }
   }
@@ -58,7 +93,11 @@ const pages = async () => {
     <td class="left-picks" rowspan="2">
       ${left.picks
         .map((u) =>
-          u === "nobody" ? "nobody" : `<a href="brackets/${u}.png">${u}</a>`
+          u === "nobody"
+            ? "nobody"
+            : `<a href="brackets/${u}.png">${u}</a>${
+                winPercentage[u] ? ` (${winPercentage[u]})` : ""
+              }`
         )
         .join("<br/>")}
     </td>
@@ -68,7 +107,11 @@ const pages = async () => {
     <td class="right-picks" rowspan="2">
       ${right.picks
         .map((u) =>
-          u === "nobody" ? "nobody" : `<a href="brackets/${u}.png">${u}</a>`
+          u === "nobody"
+            ? "nobody"
+            : `<a href="brackets/${u}.png">${u}</a>${
+                winPercentage[u] ? ` (${winPercentage[u]})` : ""
+              }`
         )
         .join("<br/>")}
     </td>
