@@ -165,9 +165,10 @@
     <script type="text/javascript">
       window.setWinners = (winners, actual) => {
         // Clear anything that previously existed
-        Array.from(document.querySelectorAll("#brackets div")).forEach(
-          (el) => (el.innerText = "")
-        );
+        Array.from(document.querySelectorAll("#bracket div")).forEach((el) => {
+          el.innerText = "";
+          el.setAttribute("class", "");
+        });
 
         Object.entries(winners).forEach(([match, bear]) => {
           console.log(`match ${match}: ${bear}`);
@@ -179,9 +180,11 @@
                 "class",
                 actual[match] === bear ? "correct" : "incorrect"
               );
-              document.querySelector(
-                `#match_${match}_winner_actual`
-              ).innerText = actual[match];
+              if (actual[match] !== bear) {
+                document.querySelector(
+                  `#match_${match}_winner_actual`
+                ).innerText = actual[match];
+              }
             }
           }
         });
