@@ -21,54 +21,106 @@
         position: absolute;
       }
 
+      div#bracket div.correct:before {
+        content: "✅ ";
+      }
+
+      div#bracket div.incorrect {
+        text-decoration: line-through;
+      }
+
+      div#bracket div.incorrect:before {
+        content: "❌ ";
+      }
+
       div#match_01_winner {
         left: 490px;
         top: 220px;
+      }
+      div#match_01_winner_actual {
+        left: 490px;
+        top: 270px;
       }
 
       div#match_02_winner {
         left: 490px;
         top: 990px;
       }
+      div#match_02_winner_actual {
+        left: 490px;
+        top: 1040px;
+      }
 
       div#match_03_winner {
         left: 1450px;
         top: 220px;
+      }
+      div#match_03_winner_actual {
+        left: 1450px;
+        top: 270px;
       }
 
       div#match_04_winner {
         left: 1450px;
         top: 990px;
       }
+      div#match_04_winner_actual {
+        left: 1450px;
+        top: 1040px;
+      }
 
       div#match_05_winner {
         left: 680px;
         top: 390px;
+      }
+      div#match_05_winner_actual {
+        left: 680px;
+        top: 440px;
       }
 
       div#match_06_winner {
         left: 680px;
         top: 810px;
       }
+      div#match_06_winner_actual {
+        left: 680px;
+        top: 860px;
+      }
 
       div#match_07_winner {
         left: 1250px;
         top: 390px;
+      }
+      div#match_07_winner_actual {
+        left: 1250px;
+        top: 440px;
       }
 
       div#match_08_winner {
         left: 1250px;
         top: 810px;
       }
+      div#match_08_winner_actual {
+        left: 1250px;
+        top: 860px;
+      }
 
       div#match_09_winner {
         left: 870px;
         top: 450px;
       }
+      div#match_09_winner_actual {
+        left: 870px;
+        top: 500px;
+      }
 
       div#match_10_winner {
         left: 1020px;
         top: 750px;
+      }
+      div#match_10_winner_actual {
+        left: 1020px;
+        top: 800px;
       }
 
       div#match_11_winner {
@@ -95,11 +147,23 @@
       <div id="match_10_winner"></div>
       <div id="match_11_winner"></div>
 
+      <div id="match_01_winner_actual"></div>
+      <div id="match_02_winner_actual"></div>
+      <div id="match_03_winner_actual"></div>
+      <div id="match_04_winner_actual"></div>
+      <div id="match_05_winner_actual"></div>
+      <div id="match_06_winner_actual"></div>
+      <div id="match_07_winner_actual"></div>
+      <div id="match_08_winner_actual"></div>
+      <div id="match_09_winner_actual"></div>
+      <div id="match_10_winner_actual"></div>
+      <div id="match_11_winner_actual"></div>
+
       <!-- 2100 x 1456 -->
       <img src="bracket.jpg" />
     </div>
     <script type="text/javascript">
-      window.setWinners = (winners) => {
+      window.setWinners = (winners, actual) => {
         // Clear anything that previously existed
         Array.from(document.querySelectorAll("#brackets div")).forEach(
           (el) => (el.innerText = "")
@@ -110,6 +174,15 @@
           const el = document.querySelector(`#match_${match}_winner`);
           if (el) {
             el.innerText = bear;
+            if (actual[match]) {
+              el.setAttribute(
+                "class",
+                actual[match] === bear ? "correct" : "incorrect"
+              );
+              document.querySelector(
+                `#match_${match}_winner_actual`
+              ).innerText = actual[match];
+            }
           }
         });
       };

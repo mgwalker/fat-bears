@@ -73,9 +73,33 @@ const exists = async (path) => {
           }
         });
 
-        await page.evaluate((w) => {
-          setWinners(w);
-        }, winners);
+        const actualBracket = JSON.parse(
+          await fs.readFile(path.join(DIR, "../docs/bracket.json"))
+        );
+        const actualWinners = {};
+        const queue = [actualBracket.bracket.left, actualBracket.bracket.right];
+        if (actualBracket.champion) {
+          const match = actualBracket.bracket.id;
+          actualWinners[match] = actualBracket.champion;
+          queue.push(actualBracket.bracket.left, actualBracket.bracket.right);
+        }
+
+        while (queue.length) {
+          const target = queue.pop();
+          if (target.bracket) {
+            if (target.bear) {
+              actualWinners[target.bracket.id] = target.bear;
+            }
+            queue.push(target.bracket.left, target.bracket.right);
+          }
+        }
+
+        await page.evaluate(
+          ([w, a]) => {
+            setWinners(w, a);
+          },
+          [winners, actualWinners]
+        );
 
         const bb = await page.$("#bracket");
         await bb.screenshot({
