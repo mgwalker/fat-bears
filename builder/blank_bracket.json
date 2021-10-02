@@ -5,7 +5,7 @@
     "bracket": {
       "id": "09",
       "left": {
-        "bear": null,
+        "bear": "132's Spring Cub",
         "bracket": {
           "id": "05",
           "left": {
@@ -32,7 +32,7 @@
         }
       },
       "right": {
-        "bear": null,
+        "bear": "151 Walker",
         "bracket": {
           "id": "06",
           "left": {
