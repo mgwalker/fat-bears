@@ -61,7 +61,7 @@
       "bracket": {
         "id": "10",
         "left": {
-          "bear": null,
+          "bear": "812",
           "bracket": {
             "id": "07",
             "left": {
@@ -85,7 +85,7 @@
           }
         },
         "right": {
-          "bear": null,
+          "bear": "480 Otis",
           "bracket": {
             "id": "08",
             "left": {
