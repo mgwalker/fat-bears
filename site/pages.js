@@ -80,9 +80,11 @@ const pages = async () => {
   }
   undecided.sort((a, b) => (+a.id > +b.id ? 1 : -1));
 
-  const html = undecided
-    .map(
-      ({ id, left, right }, i) => `
+  let html;
+  if (undecided.length) {
+    html = undecided
+      .map(
+        ({ id, left, right }, i) => `
   ${i > 0 ? `<tr class="spacer"><td colspan="5"></td></tr>` : ""}
   <tr>
     <th class="match">picked by</th>
@@ -124,8 +126,32 @@ const pages = async () => {
       .toLowerCase()
       .replace(/[\s']/g, "_")}.png"></td>
 `
-    )
-    .join("\n");
+      )
+      .join("\n");
+  } else {
+    const people = Object.keys(winPercentage).sort((a, b) => {
+      const aa = Number.parseInt(winPercentage[a]);
+      const bb = Number.parseInt(winPercentage[b]);
+
+      if (aa > bb) {
+        return -1;
+      }
+      if (aa < bb) {
+        return 1;
+      }
+      return 0;
+    });
+
+    html = people
+      .map(
+        (person) => `
+      <tr>
+        <td><a href="brackets/${person}.png">${person}</a></td>
+        <td>${winPercentage[person]}</td>
+      </tr>`
+      )
+      .join("");
+  }
 
   await fs.writeFile(
     path.join(docs, "index.html"),
@@ -185,9 +211,22 @@ const pages = async () => {
       td.vs {
         vertical-align: middle;
       }
+
+      h1 {
+        text-align: center;
+      }
+
+      h1 img {
+        max-width: 90vw;
+      }
     </style>
   </head>
   <body>
+    <h1>
+      Congratulations Otis!<br/>
+      <img src="bears/champion.png">
+    </h1>
+  ${undecided.length === 0 ? "<h1>Final brackets</h1>" : ""}
     <table>
 ${html}
     </table>
