@@ -34,7 +34,7 @@ jobs:
             ]);
 
             for await(const run of runs.data.workflow_runs) {
-              if(run.id !== context.runId && doneStates.has(run.state)) {
+              if(run.id !== context.runId && doneStates.has(run.status)) {
                 console.log(`Deleting run #${run.run_number} (${run.id})`);
                 await github.rest.actions.deleteWorkflowRun({
                   owner: context.repo.owner,
