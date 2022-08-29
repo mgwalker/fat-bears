@@ -1,6 +1,10 @@
 const util = require("./util");
 const { bears, matches } = require("./data/bracket.json");
 
+Object.entries(bears).forEach(([number, bear]) => {
+  bear.display = bear.name ? `${number} - ${bear.name}` : number;
+});
+
 (async () => {
   if (process.argv.length < 3) {
     process.exit(0);
@@ -76,21 +80,82 @@ const { bears, matches } = require("./data/bracket.json");
 
     message.push(`# Round ${id}`);
 
-    for (const number of match.bears) {
-      const bear = bears[number];
-      const nn = bear.name ? `${number} - ${bear.name}` : number;
-
-      message.push(`### ${nn}`);
-      message.push(
-        `![${nn} before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)`
-      );
-
-      if (bear.description) {
-        message.push(bear.description);
-      }
-      message.push("--- vs ---");
+    message.push(`
+<table>
+  <thead>
+    <tr>
+      <th>${bears[match.bears[0]].display}</th>
+      <th/>
+      <th>${bears[match.bears[1]].display}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <td width="45%">
+      <img src="https://fatbears.18f.org/2022/pics/explore-${
+        match.bears[0]
+      }.png" alt="${
+      bears[match.bears[0]].display
+    } before and after, courtesy of Explore.org">${
+      bears[match.bears[0]].description
+        ? `<br>\n${bears[match.bears[0]].description}`
+        : ""
     }
-    message.pop();
+    </td>
+    <td align="center">vs.</td>
+    <td width="45%">
+      <img src="https://fatbears.18f.org/2022/pics/explore-${
+        match.bears[1]
+      }.png" alt="${
+      bears[match.bears[1]].display
+    } before and after, courtesy of Explore.org">${
+      bears[match.bears[1]].description
+        ? `<br>\n${bears[match.bears[1]].description}`
+        : ""
+    }
+    </td>
+  </tbody>
+</table>`);
+
+    // const columns = match.bears.map((number) => {
+    //   const bear = bears[number];
+    //   return [
+    //     bear.display,
+    //     `![${
+    //       bear.display
+    //     } before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)${
+    //       bear.description ? `<br>${bear.description}` : ""
+    //     }`,
+    //   ];
+    // });
+
+    // for (const number of match.bears) {
+    //   const bear = bears[number];
+
+    //   const column = [bear.display];
+    //   column.push(
+    //     `![${
+    //       bear.display
+    //     } before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)${
+    //       bear.description ? `<br>${bear.description}` : ""
+    //     }`
+    //   );
+    //   columns.push(column);
+
+    //   // message.push(`### ${bear.display}`);
+    //   // message.push(
+    //   //   `![${bear.display} before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)`
+    //   // );
+
+    //   // if (bear.description) {
+    //   //   message.push(bear.description);
+    //   // }
+    //   // message.push("--- vs ---");
+    // }
+    //     message.push(`|${columns[0][0]}||${columns[1][0]}
+    // |:--|:--:|:--|
+    // |${columns[0][1]}|vs.|${columns[1][1]}`);
+
+    // message.pop();
 
     message.push("-----");
     message.push("Who do you choose? Respond to this message with either:");
@@ -129,12 +194,10 @@ const { bears, matches } = require("./data/bracket.json");
     const winner = matches[11].winner;
     const bear = bears[winner];
 
-    const nn = bear.name ? `${winner} - ${bear.name}` : winner;
-
     await util.addIssueComment(
       [
         getLastPickAcknowledgement(matches),
-        `And that's it, you've finished your bracket! Good luck to ${nn} to win it all!`,
+        `And that's it, you've finished your bracket! Good luck to ${bear.display} to win it all!`,
       ].join(" ")
     );
     await util.closeAndLockIssue();
