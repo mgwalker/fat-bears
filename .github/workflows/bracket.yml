@@ -1,4 +1,4 @@
-name: issue created
+name: building a bracket
 
 on:
   issues:

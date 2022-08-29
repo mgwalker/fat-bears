@@ -1,4 +1,4 @@
-name: issue created
+name: action cleanup
 
 on:
   schedule:
