@@ -1,0 +1,40 @@
+name: issue created
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions: write-all
+
+jobs:
+  bracket-conversation:
+    name: bracket conversation
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
+        with:
+          node-version: 16
+
+      - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+        with:
+          ref: main
+
+      - name: install dependencies
+        run: npm install
+
+      - name: parse bracket
+        id: parse
+        run: node src/parse.js
+
+      - name: ask for next pick
+        id: next
+        run: node src/next.js '${{ steps.parse.outputs.bracket }}'
+      
+      - name: finalize bracket
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        run: node src/bracket.js '${{ steps.parse.outputs.bracket }}'

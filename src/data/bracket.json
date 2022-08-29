@@ -1,0 +1,37 @@
+{
+  "bears": {
+    "480": {
+      "name": "Otis",
+      "wins": [2014, 2016, 2017, 2021],
+      "description": "King of Katmai, Otis is one of the older bears at the falls. He's lost several teeth and he has arthritis, but nothing can stop this champion from getting fat as fat can be. He's an expert fisher, preferring his spot at the office, but perfectly capable of catching giant fish from anywhere else on the river. Most easily-identifiable when his fall coat comes in thanks to the prominent \"7\" pattern on his left shoulder, Otis can also be picked out in the spring thanks to his floppy right ear and his unique unlimited patience. Otis was the inaugural Fat Bear champion, and he's been a contender ever since."
+    },
+    "747": {
+      "name": "Colbert",
+      "wins": [2020],
+      "description": "There is perhaps no more aptly-numbered bear than 747. \"Jumbo\" is very accurate description, and there's no doubt he is a wide-body bear. Sometimes called Bearforce One, Colbert packs on the pounds like nobody else. A dominant bear, Colbert can fish from wherever he wants, bumping other bears out of the way. You can pick out Colbert simply by his enormous girth, but in early spring he's best-identified by his erratic shedding that makes him look a little... mangy. In 2022, he arrived at the falls with a badly-damaged right ear that now hangs a bit limply."
+    },
+    "3": { "name": "" },
+    "4": { "name": "" },
+    "5": { "name": "" },
+    "6": { "name": "" },
+    "7": { "name": "" },
+    "8": { "name": "" },
+    "9": { "name": "" },
+    "10": { "name": "" },
+    "11": { "name": "" },
+    "12": { "name": "" }
+  },
+  "matches": {
+    "1": { "bears": ["480", "747"], "next": 5 },
+    "2": { "bears": ["3", "4"], "next": 6 },
+    "3": { "bears": ["5", "6"], "next": 7 },
+    "4": { "bears": ["7", "8"], "next": 8 },
+    "5": { "bears": ["9"], "next": 9 },
+    "6": { "bears": ["10"], "next": 9 },
+    "7": { "bears": ["11"], "next": 10 },
+    "8": { "bears": ["12"], "next": 10 },
+    "9": { "bears": [], "next": 11 },
+    "10": { "bears": [], "next": 11 },
+    "11": { "bears": [], "next": false }
+  }
+}
