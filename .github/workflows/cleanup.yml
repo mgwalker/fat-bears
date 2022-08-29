@@ -1,0 +1,45 @@
+name: issue created
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '20 * * * *'
+
+permissions: write-all
+
+jobs:
+  update:
+    name: cleanup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: cleanup old action runs
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const runs = await github.rest.actions.listWorkflowRunsForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            const doneStates = new Set([
+              "completed",
+              "cancelled",
+              "failure",
+              "neutral",
+              "skipped",
+              "stale",
+              "success",
+              "timed_out",
+            ]);
+
+            for await(const run of runs.data.workflow_runs) {
+              if(run.id !== context.runId && doneStates.has(run.state)) {
+                console.log(`Deleting run #${run.run_number} (${run.id})`);
+                await github.rest.actions.deleteWorkflowRun({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  run_id: run.id
+                });
+              }
+            }
