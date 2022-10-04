@@ -5,6 +5,8 @@ const { fileURLToPath, pathToFileURL } = require("url");
 
 const DIR = __dirname;
 const bracketPath = path.join(DIR, "..", "brackets");
+const dataPath = path.join(DIR, "data");
+const docsPath = path.join(DIR, "..", "docs");
 
 const exists = async (path) => {
   try {
@@ -23,7 +25,7 @@ const exists = async (path) => {
       viewport: { height: 1630, width: 2100 },
     });
 
-    const url = pathToFileURL(path.join(DIR, "data", "bracket.html")).href;
+    const url = pathToFileURL(path.join(dataPath, "bracket.html")).href;
     await page.goto(url);
 
     if (await exists(bracketPath)) {
@@ -38,7 +40,14 @@ const exists = async (path) => {
       //   })
       // );
 
-      const outputDir = path.join(DIR, "..", "2022", "docs/brackets");
+      const outputDir = path.join(docsPath, "2022", "brackets");
+
+      const { bears } = JSON.parse(
+        await fs.readFile(path.join(dataPath, "bracket.json"))
+      );
+      const results = JSON.parse(
+        await fs.readFile(path.join(dataPath, "results.json"))
+      );
 
       for await (const bracketFile of bracketFiles) {
         const user = path.basename(bracketFile, ".json");
@@ -49,56 +58,66 @@ const exists = async (path) => {
         }
 
         const bracket = JSON.parse(await fs.readFile(bracketFile));
-        const brackets = [bracket];
+        // const brackets = [bracket];
 
-        const winners = {};
-        while (brackets.length) {
-          const bracket = brackets.pop();
-          if (bracket.bracket) {
-            winners[bracket.bracket.id] = bracket.bear ?? bracket.champion;
-            brackets.push(bracket.bracket.left);
-            brackets.push(bracket.bracket.right);
-          }
-        }
+        // const winners = {};
+        // while (brackets.length) {
+        //   const bracket = brackets.pop();
+        //   if (bracket.bracket) {
+        //     winners[bracket.bracket.id] = bracket.bear ?? bracket.champion;
+        //     brackets.push(bracket.bracket.left);
+        //     brackets.push(bracket.bracket.right);
+        //   }
+        // }
 
-        Object.entries(winners).forEach(([match, bear]) => {
-          if (!allMatches[match]) {
-            allMatches[match] = {};
+        // Object.entries(winners).forEach(([match, bear]) => {
+        //   if (!allMatches[match]) {
+        //     allMatches[match] = {};
+        //   }
+        //   if (!allMatches[match][bear]) {
+        //     allMatches[match][bear] = [];
+        //   }
+        //   if (!allMatches[match][bear].includes(user)) {
+        //     allMatches[match][bear].push(user);
+        //   }
+        // });
+
+        // const actualWinners = {};
+        // const queue = [blankBracket.bracket.left, blankBracket.bracket.right];
+        // if (blankBracket.champion) {
+        //   const match = blankBracket.bracket.id;
+        //   actualWinners[match] = blankBracket.champion;
+        //   queue.push(blankBracket.bracket.left, blankBracket.bracket.right);
+        // }
+
+        // while (queue.length) {
+        //   const target = queue.pop();
+        //   if (target.bracket) {
+        //     if (target.bear) {
+        //       actualWinners[target.bracket.id] = target.bear;
+        //     }
+        //     queue.push(target.bracket.left, target.bracket.right);
+        //   }
+        // }
+
+        const picks = Object.entries(bracket).map(([match, { winner }]) => {
+          const bear = bears[winner];
+          let name = `${winner} ${bear.name}`;
+
+          if (bear.name === winner) {
+            name = winner;
+          } else if (/\D/.test(winner)) {
+            name = bear.name;
           }
-          if (!allMatches[match][bear]) {
-            allMatches[match][bear] = [];
-          }
-          if (!allMatches[match][bear].includes(user)) {
-            allMatches[match][bear].push(user);
-          }
+
+          return [match, winner, name];
         });
-
-        const actualBracket = JSON.parse(
-          await fs.readFile(path.join(DIR, "../docs/bracket.json"))
-        );
-        const actualWinners = {};
-        const queue = [actualBracket.bracket.left, actualBracket.bracket.right];
-        if (actualBracket.champion) {
-          const match = actualBracket.bracket.id;
-          actualWinners[match] = actualBracket.champion;
-          queue.push(actualBracket.bracket.left, actualBracket.bracket.right);
-        }
-
-        while (queue.length) {
-          const target = queue.pop();
-          if (target.bracket) {
-            if (target.bear) {
-              actualWinners[target.bracket.id] = target.bear;
-            }
-            queue.push(target.bracket.left, target.bracket.right);
-          }
-        }
 
         await page.evaluate(
           ([w, a]) => {
             setWinners(w, a);
           },
-          [winners, actualWinners]
+          [picks, results]
         );
 
         const bb = await page.$("#bracket");

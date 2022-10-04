@@ -38,3 +38,11 @@ jobs:
       - name: finalize bracket
         if: ${{ steps.next.outputs.done == 'yes' }}
         run: node src/bracket.js '${{ steps.parse.outputs.bracket }}'
+
+      - name: create bracket image
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        run: node src/createBracketImages.js
+
+      - name: commit
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        run: node src/commit.js
