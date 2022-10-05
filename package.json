@@ -20,6 +20,7 @@
   "dependencies": {
     "@actions/exec": "^1.1.1",
     "@octokit/rest": "^19.0.4",
+    "mustache": "^4.2.0",
     "playwright-chromium": "^1.26.1"
   }
 }

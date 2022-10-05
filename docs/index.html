@@ -1,70 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <style type="text/css">
-      * {
-        font-family: sans-serif;
-      }
+<head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    * {
+      font-family: sans-serif;
+    }
 
-      table {
-        border-spacing: 0;
-        margin: 0 auto;
-      }
+    table {
+      border-spacing: 0;
+      margin: 0 auto;
+    }
 
-      tr.spacer td {
-        padding: 1em 0;
-      }
+    tr.spacer td {
+      padding: 1em 0;
+    }
 
-      td {
-        vertical-align: top;
-      }
+    td {
+      vertical-align: top;
+    }
 
-      td.bear {
-        text-align: center;
-        font-size: 2em;
-        font-weight: 700;
-        padding: 0 1em;
-      }
+    td .bear {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 700;
+      padding: 0 1em;
+    }
 
-      td.img {
-        padding-bottom: 1em;
-        text-align: center;
-        vertical-align: middle;
-      }
+    td img {
+      max-height: 400px;
+      max-width: 400px;
+    }
 
-      td.img img {
-        max-height: 400px;
-        max-width: 400px;
-      }
+    h3 {
+      background-color: darkseagreen;
+      padding: 0.5em 10px;
+    }
 
-      td.left-picks {
-        text-align: right;
-      }
+    h1 {
+      text-align: center;
+    }
 
-      th.match {
-        background-color: darkseagreen;
-        padding: 0.5em 10px;
-      }
+    h1 img {
+      max-width: 90vw;
+    }
+  </style>
+</head>
+<body>
 
-      td.right-picks {
-        text-align: left;
-      }
+  <table>
+    <tr class="category">
+      <td colspan="2">
+        <h1>Upcoming</h1>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Match 1</h3>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <img src="2022/pics/explore-335.png">
+          <br>
+          <div class="bear">335</div>
+          <hr>
+          <div><a href="2022/brackets/quepol.png">quepol</a></div>
+        </td>
+        <td>
+          <img src="2022/pics/explore-164.png">
+          <br>
+          <div class="bear">Bucky Dent</div>
+          <hr>
+          <div><a href="2022/brackets/btylerburton.png">btylerburton</a></div>
+          <div><a href="2022/brackets/drtaru.png">drtaru</a></div>
+          <div><a href="2022/brackets/ertzeid.png">ertzeid</a></div>
+          <div><a href="2022/brackets/mgwalker.png">mgwalker</a></div>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Match 2</h3>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <img src="2022/pics/explore-747.png">
+          <br>
+          <div class="bear">747</div>
+          <hr>
+          <div><a href="2022/brackets/btylerburton.png">btylerburton</a></div>
+          <div><a href="2022/brackets/drtaru.png">drtaru</a></div>
+          <div><a href="2022/brackets/ertzeid.png">ertzeid</a></div>
+          <div><a href="2022/brackets/mgwalker.png">mgwalker</a></div>
+        </td>
+        <td>
+          <img src="2022/pics/explore-856.png">
+          <br>
+          <div class="bear">856</div>
+          <hr>
+          <div><a href="2022/brackets/quepol.png">quepol</a></div>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Match 3</h3>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <img src="2022/pics/explore-854.png">
+          <br>
+          <div class="bear">Divot</div>
+          <hr>
+        </td>
+        <td>
+          <img src="2022/pics/explore-151.png">
+          <br>
+          <div class="bear">Walker</div>
+          <hr>
+          <div><a href="2022/brackets/btylerburton.png">btylerburton</a></div>
+          <div><a href="2022/brackets/drtaru.png">drtaru</a></div>
+          <div><a href="2022/brackets/ertzeid.png">ertzeid</a></div>
+          <div><a href="2022/brackets/mgwalker.png">mgwalker</a></div>
+          <div><a href="2022/brackets/quepol.png">quepol</a></div>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>Match 4</h3>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <img src="2022/pics/explore-901.png">
+          <br>
+          <div class="bear">901</div>
+          <hr>
+          <div><a href="2022/brackets/drtaru.png">drtaru</a></div>
+          <div><a href="2022/brackets/ertzeid.png">ertzeid</a></div>
+        </td>
+        <td>
+          <img src="2022/pics/explore-909-yearling.png">
+          <br>
+          <div class="bear">909&#39;s yearling</div>
+          <hr>
+          <div><a href="2022/brackets/btylerburton.png">btylerburton</a></div>
+          <div><a href="2022/brackets/mgwalker.png">mgwalker</a></div>
+          <div><a href="2022/brackets/quepol.png">quepol</a></div>
+        </td>
+    </tr>
+  </table>
 
-      td.vs {
-        vertical-align: middle;
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      h1 img {
-        max-width: 90vw;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Fat Bear Week 2022</h1>
-  </body>
+</body>
 </html>

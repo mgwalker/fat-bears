@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 const { chromium } = require("playwright-chromium");
-const { fileURLToPath, pathToFileURL } = require("url");
+const { pathToFileURL } = require("url");
 
 const DIR = __dirname;
 const bracketPath = path.join(DIR, "..", "brackets");

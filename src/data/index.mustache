@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    * {
+      font-family: sans-serif;
+    }
+
+    table {
+      border-spacing: 0;
+      margin: 0 auto;
+    }
+
+    tr.spacer td {
+      padding: 1em 0;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    td .bear {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 700;
+      padding: 0 1em;
+    }
+
+    td img {
+      max-height: 400px;
+      max-width: 400px;
+    }
+
+    h3 {
+      background-color: darkseagreen;
+      padding: 0.5em 10px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h1 img {
+      max-width: 90vw;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+  {{#categories}}
+    <tr class="category">
+      <td colspan="2">
+        <h1>{{ name }}</h1>
+      </td>
+    </tr>
+    {{#matches}}
+    <tr>
+      <td colspan="2">
+        <h3>Match {{ id }}</h3>
+      </td>
+    </tr>
+    <tr>
+      {{#bears}}
+        <td>
+          <img src="2022/pics/explore-{{id}}.png">
+          <br>
+          <div class="bear">{{ name }}</div>
+          <hr>
+          {{#choosers}}
+          <div><a href="2022/brackets/{{.}}.png">{{.}}</a></div>
+          {{/choosers}}
+        </td>
+      {{/bears}}
+    </tr>
+    {{/matches}}
+  {{/categories}}
+  </table>
+
+</body>
+</html>
