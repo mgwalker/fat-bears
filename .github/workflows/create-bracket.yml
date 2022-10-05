@@ -45,4 +45,4 @@ jobs:
 
       - name: commit
         if: ${{ steps.next.outputs.done == 'yes' }}
-        uses: .github/workflows/commit
+        uses: ./.github/workflows/commit

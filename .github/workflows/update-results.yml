@@ -26,6 +26,6 @@ jobs:
         run: node src/updateResults.js
 
       - name: commit
-        uses: .github/workflows/commit
+        uses: ./.github/workflows/commit
         with:
           message: updating base bracket
