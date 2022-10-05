@@ -11,6 +11,7 @@ const github = new Octokit({
 const EVENT = JSON.parse(
   fs.readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: "utf-8" })
 );
+console.log(EVENT);
 
 const issueNumber = (() => {
   if (EVENT.type === "IssueCommentEvent") {
