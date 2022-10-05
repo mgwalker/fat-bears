@@ -10,3 +10,4 @@ runs:
   steps:
     - name: commit
       run: node src/commit.js "${{ inputs.message }}"
+      shell: bash
