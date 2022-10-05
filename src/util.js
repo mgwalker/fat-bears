@@ -51,7 +51,7 @@ const closeAndLockIssue = async () => {
 const exec = async (cmd) => e.exec("sh", ["-c", cmd]);
 
 const getUser = async () => {
-  return EVENT.actor.login;
+  return EVENT.sender.login;
 };
 
 process.stdout.write(os.EOL);
