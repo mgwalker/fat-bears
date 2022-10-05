@@ -116,47 +116,6 @@ Object.entries(bears).forEach(([number, bear]) => {
   </tbody>
 </table>`);
 
-    // const columns = match.bears.map((number) => {
-    //   const bear = bears[number];
-    //   return [
-    //     bear.display,
-    //     `![${
-    //       bear.display
-    //     } before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)${
-    //       bear.description ? `<br>${bear.description}` : ""
-    //     }`,
-    //   ];
-    // });
-
-    // for (const number of match.bears) {
-    //   const bear = bears[number];
-
-    //   const column = [bear.display];
-    //   column.push(
-    //     `![${
-    //       bear.display
-    //     } before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)${
-    //       bear.description ? `<br>${bear.description}` : ""
-    //     }`
-    //   );
-    //   columns.push(column);
-
-    //   // message.push(`### ${bear.display}`);
-    //   // message.push(
-    //   //   `![${bear.display} before and after, courtesy of Explore.org](https://fatbears.18f.org/2022/pics/explore-${number}.png)`
-    //   // );
-
-    //   // if (bear.description) {
-    //   //   message.push(bear.description);
-    //   // }
-    //   // message.push("--- vs ---");
-    // }
-    //     message.push(`|${columns[0][0]}||${columns[1][0]}
-    // |:--|:--:|:--|
-    // |${columns[0][1]}|vs.|${columns[1][1]}`);
-
-    // message.pop();
-
     message.push("-----");
     message.push("Who do you choose? Respond to this message with either:");
 
@@ -171,8 +130,6 @@ Object.entries(bears).forEach(([number, bear]) => {
   const lastUserPick = Object.keys(userBracket)
     .sort((a, b) => +a - +b)
     .pop();
-
-  console.log(`Last user pick: ${lastUserPick}`);
 
   if (
     lastUserPick &&
@@ -194,10 +151,14 @@ Object.entries(bears).forEach(([number, bear]) => {
     const winner = matches[11].winner;
     const bear = bears[winner];
 
+    const user = await util.getUser();
+
     await util.addIssueComment(
       [
         getLastPickAcknowledgement(matches),
-        `And that's it, you've finished your bracket! Good luck to ${bear.display} to win it all!`,
+        `And that's it, you've finished your bracket! Good luck to ${bear.display} to win it all!
+
+Your bracket will be available for download at https://fatbears.18f.org/2022/brackets/${user}.png in a few minutes.`,
       ].join(" ")
     );
     await util.closeAndLockIssue();
