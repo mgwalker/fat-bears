@@ -27,17 +27,26 @@
     },
     "435": {
       "name": "Holly",
-      "wins": [2019],
+      "wins": [
+        2019
+      ],
       "description": "One of the elder bears of Brooks Falls, Holly is also an amazing mother. She's raised several cubs into successful adulthood through difficulties – a cub with a leg injury, an adopted cub, and a nasty encounter with a porcupine. Holly can be identified by her blonde fur. Her body darkens in the fall, but her ears stay light."
     },
     "480": {
       "name": "Otis",
-      "wins": [2014, 2016, 2017, 2021],
+      "wins": [
+        2014,
+        2016,
+        2017,
+        2021
+      ],
       "description": "King of Katmai, Otis is one of the older bears at the falls. He's lost several teeth and he has arthritis, but nothing can stop this champion from getting fat as fat can be. He's an expert fisher, preferring his spot at the office, but perfectly capable of catching giant fish from anywhere else on the river. Most easily-identifiable when his fall coat comes in thanks to the prominent \"7\" pattern on his left shoulder, Otis can also be picked out in the spring thanks to his floppy right ear and his unique unlimited patience. Otis was the inaugural Fat Bear champion, and he's been a contender ever since."
     },
     "747": {
       "name": "747",
-      "wins": [2020],
+      "wins": [
+        2020
+      ],
       "description": "There is perhaps no more aptly-numbered bear than 747. \"Jumbo\" is very accurate description, and there's no doubt he is a wide-body bear. Sometimes called Bearforce One, 747 packs on the pounds like nobody else. A dominant bear, 747 can fish from wherever he wants, bumping other bears out of the way. You can pick out 747 simply by his enormous girth, but in early spring he's best-identified by his erratic shedding that makes him look a little... mangy. In 2022, he arrived at the falls with a badly-damaged right ear that now hangs a bit limply."
     },
     "854": {
@@ -62,18 +71,71 @@
     }
   },
   "matches": {
-    "1": { "bears": ["335", "164"], "next": 5 },
-    "2": { "bears": ["747", "856"], "next": 6 },
-    "3": { "bears": ["854", "151"], "next": 7 },
-    "4": { "bears": ["901", "909-yearling"], "next": 8 },
-
-    "5": { "bears": ["435"], "next": 9 },
-    "6": { "bears": ["32"], "next": 9 },
-    "7": { "bears": ["128"], "next": 10 },
-    "8": { "bears": ["480"], "next": 10 },
-
-    "9": { "bears": [], "next": 11 },
-    "10": { "bears": [], "next": 11 },
-    "11": { "bears": [], "next": false }
+    "1": {
+      "bears": [
+        "335",
+        "164"
+      ],
+      "next": 5,
+      "winner": "164"
+    },
+    "2": {
+      "bears": [
+        "747",
+        "856"
+      ],
+      "next": 6
+    },
+    "3": {
+      "bears": [
+        "854",
+        "151"
+      ],
+      "next": 7
+    },
+    "4": {
+      "bears": [
+        "901",
+        "909-yearling"
+      ],
+      "next": 8
+    },
+    "5": {
+      "bears": [
+        "435",
+        "164"
+      ],
+      "next": 9
+    },
+    "6": {
+      "bears": [
+        "32"
+      ],
+      "next": 9
+    },
+    "7": {
+      "bears": [
+        "128"
+      ],
+      "next": 10
+    },
+    "8": {
+      "bears": [
+        "480"
+      ],
+      "next": 10
+    },
+    "9": {
+      "bears": [],
+      "next": 11
+    },
+    "10": {
+      "bears": [],
+      "next": 11
+    },
+    "11": {
+      "bears": [],
+      "next": false
+    }
   }
 }

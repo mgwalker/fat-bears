@@ -1,0 +1,31 @@
+name: update fat bear results
+
+on:
+  push:
+    paths:
+      - src/data/results.json
+
+jobs:
+  update:
+    name: update results
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
+        with:
+          node-version: 16
+
+      - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+        with:
+          ref: main
+
+      - name: install dependencies
+        run: npm install
+      
+      - name: update base bracket
+        run: node src/updateResults.js
+
+      - name: commit
+        uses: .github/workflows/commit
+        with:
+          message: updating base bracket

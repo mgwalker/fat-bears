@@ -1,0 +1,12 @@
+name: commit
+description: commit
+inputs:
+  message:
+    required: false
+    type: string
+    default: ''
+runs:
+  using: composite
+  steps:
+    - name: commit
+      run: node src/commit.js "${{ inputs.message }}"
