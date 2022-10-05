@@ -1,0 +1,90 @@
+{
+  "1": {
+    "bears": [
+      "335",
+      "164"
+    ],
+    "next": 5,
+    "winner": "335"
+  },
+  "2": {
+    "bears": [
+      "747",
+      "856"
+    ],
+    "next": 6,
+    "winner": "856"
+  },
+  "3": {
+    "bears": [
+      "854",
+      "151"
+    ],
+    "next": 7,
+    "winner": "151"
+  },
+  "4": {
+    "bears": [
+      "901",
+      "909-yearling"
+    ],
+    "next": 8,
+    "winner": "909-yearling"
+  },
+  "5": {
+    "bears": [
+      "435",
+      "335"
+    ],
+    "next": 9,
+    "winner": "435"
+  },
+  "6": {
+    "bears": [
+      "32",
+      "856"
+    ],
+    "next": 9,
+    "winner": "856"
+  },
+  "7": {
+    "bears": [
+      "128",
+      "151"
+    ],
+    "next": 10,
+    "winner": "128"
+  },
+  "8": {
+    "bears": [
+      "480",
+      "909-yearling"
+    ],
+    "next": 10,
+    "winner": "909-yearling"
+  },
+  "9": {
+    "bears": [
+      "435",
+      "856"
+    ],
+    "next": 11,
+    "winner": "856"
+  },
+  "10": {
+    "bears": [
+      "128",
+      "909-yearling"
+    ],
+    "next": 11,
+    "winner": "909-yearling"
+  },
+  "11": {
+    "bears": [
+      "856",
+      "909-yearling"
+    ],
+    "next": false,
+    "winner": "909-yearling"
+  }
+}
