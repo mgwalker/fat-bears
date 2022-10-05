@@ -8,8 +8,18 @@ const github = new Octokit({
   userAgent: "fat bears 2021",
 });
 
+const EVENT = JSON.parse(
+  fs.readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: "utf-8" })
+);
+
+const issueNumber = (() => {
+  if (EVENT.type === "IssueCommentEvent") {
+    return EVENT.issue.issueNumber;
+  }
+  return -1;
+})();
+
 const {
-  issue: { number: issueNumber },
   repository: {
     name: repo,
     owner: { login: owner },
@@ -40,12 +50,7 @@ const closeAndLockIssue = async () => {
 const exec = async (cmd) => e.exec("sh", ["-c", cmd]);
 
 const getUser = async () => {
-  const {
-    data: {
-      user: { login },
-    },
-  } = await github.request(`GET /repos/${owner}/${repo}/issues/${issueNumber}`);
-  return login;
+  return EVENT.actor.login;
 };
 
 process.stdout.write(os.EOL);
