@@ -22,6 +22,6 @@ const dataPath = path.join(DIR, "data");
 
   await fs.writeFile(
     path.join(dataPath, "bracket.json"),
-    JSON.stringify({ bears, matches }, null, 2)
+    `${JSON.stringify({ bears, matches }, null, 2)}\n`
   );
 })();
