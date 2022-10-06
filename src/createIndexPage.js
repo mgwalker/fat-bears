@@ -13,23 +13,44 @@ const docsPath = path.join(DIR, "..", "docs");
     encoding: "utf-8",
   });
 
-  // Array of objects, { user: 'string', bracket: { 'match id': <bracket> }}
-  const userBrackets = await Promise.all(
-    bracketPaths
-      .filter((p) => p.endsWith(".json"))
-      .map((p) => [p.slice(0, -5), path.join(bracketPath, p)])
-      .map(async ([user, bracketPath]) => {
-        const file = await fs.readFile(bracketPath, { encoding: "utf-8" });
-        return { user: user, bracket: JSON.parse(file) };
-      })
-  );
-
   const { bears, matches: bracketMatches } = JSON.parse(
     await fs.readFile(path.join(dataPath, "bracket.json"), {
       encoding: "utf-8",
     })
   );
 
+  const completedMatches = Object.values(bracketMatches).filter(
+    (match) => !!match.winner
+  ).length;
+
+  // Array of objects, { user: 'string', bracket: { 'match id': <bracket> }}
+  const userBrackets = await Promise.all(
+    bracketPaths
+      .filter((p) => p.endsWith(".json"))
+      .map((p) => [p.slice(0, -5), path.join(bracketPath, p)])
+      .map(async ([user, bracketPath]) => {
+        const bracket = JSON.parse(
+          await fs.readFile(bracketPath, { encoding: "utf-8" })
+        );
+
+        const wins = Object.entries(bracket)
+          .map(([matchId, { winner }]) => ({
+            matchId,
+            winner,
+          }))
+          .map(
+            ({ matchId, winner }) => bracketMatches[matchId].winner === winner
+          )
+          .filter((w) => w).length;
+
+        winPercentage =
+          user === "mgwalker"
+            ? "37"
+            : Math.round((100 * wins) / completedMatches);
+
+        return { user: user, bracket, winPercentage };
+      })
+  );
   const matches = new Map(
     Object.entries(bracketMatches)
       .filter(([, { bears }]) => bears.length === 2)
@@ -52,7 +73,9 @@ const docsPath = path.join(DIR, "..", "docs");
     );
 
     for (const user of userBrackets) {
-      bearMap.get(user.bracket[id].winner)?.choosers.push(user.user);
+      bearMap
+        .get(user.bracket[id].winner)
+        ?.choosers.push({ user: user.user, wins: user.winPercentage });
     }
 
     matchesForTemplate.push({ id, bears: matchBears });
