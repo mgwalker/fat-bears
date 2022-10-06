@@ -43,10 +43,7 @@ const docsPath = path.join(DIR, "..", "docs");
           )
           .filter((w) => w).length;
 
-        winPercentage =
-          user === "mgwalker"
-            ? "37"
-            : Math.round((100 * wins) / completedMatches);
+        winPercentage = Math.round((100 * wins) / completedMatches);
 
         return { user: user, bracket, winPercentage };
       })
