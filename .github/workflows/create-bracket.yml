@@ -43,7 +43,7 @@ jobs:
         if: ${{ steps.next.outputs.done == 'yes' }}
         run: node src/createBracketImages.js
 
-      - name: commit
+      - name: update the index
         if: ${{ steps.next.outputs.done == 'yes' }}
         uses: ./.github/workflows/update-index
 
