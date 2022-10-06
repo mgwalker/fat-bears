@@ -62,9 +62,16 @@ const docsPath = path.join(DIR, "..", "docs");
     ({ id }) => !matches.get(id).winner
   );
 
-  const completed = matchesForTemplate.filter(
-    ({ id }) => !!matches.get(id).winner
-  );
+  const completed = matchesForTemplate
+    .filter(({ id }) => !!matches.get(id).winner)
+    .map((match) => {
+      const winner = matches.get(match.id).winner;
+
+      return {
+        ...match,
+        bears: match.bears.map((b) => ({ ...b, winner: b.id === winner })),
+      };
+    });
 
   const categories = [];
   if (upcoming.length) {

@@ -32,6 +32,10 @@
       max-width: 400px;
     }
 
+    td.winner {
+      background: #BBFFBB;
+    }
+
     h3 {
       background-color: darkseagreen;
       padding: 0.5em 10px;
@@ -63,7 +67,7 @@
     </tr>
     <tr>
       {{#bears}}
-        <td>
+        <td{{#winner}} class="winner"{{/winner}}>
           <img src="2022/pics/explore-{{id}}.png">
           <br>
           <div class="bear">{{ name }}</div>
