@@ -45,6 +45,10 @@ jobs:
 
       - name: commit
         if: ${{ steps.next.outputs.done == 'yes' }}
+        uses: ./.github/workflows/update-index
+
+      - name: commit
+        if: ${{ steps.next.outputs.done == 'yes' }}
         uses: ./.github/workflows/commit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
