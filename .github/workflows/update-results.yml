@@ -25,8 +25,7 @@ jobs:
       - name: update base bracket
         run: node src/updateResults.js
 
-      - name: commit
-        if: ${{ steps.next.outputs.done == 'yes' }}
+      - name: update the index
         uses: ./.github/workflows/update-index
 
       - name: commit
