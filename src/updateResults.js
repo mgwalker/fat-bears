@@ -15,7 +15,7 @@ const dataPath = path.join(DIR, "data");
   for (const [matchId, winner] of Object.entries(results)) {
     const match = matches[matchId];
     match.winner = winner;
-    if (match.next) {
+    if (match.next && matches[match.next].bears.length < 2) {
       matches[match.next].bears.push(winner);
     }
   }
