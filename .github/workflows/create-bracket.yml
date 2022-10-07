@@ -16,39 +16,40 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
-        with:
-          node-version: 16
+      - run: echo "Bracketing is closed for 2022"
+      # - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
+      #   with:
+      #     node-version: 16
 
-      - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
-        with:
-          ref: main
+      # - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+      #   with:
+      #     ref: main
 
-      - name: install dependencies
-        run: npm install
+      # - name: install dependencies
+      #   run: npm install
 
-      - name: parse bracket
-        id: parse
-        run: node src/parse.js
+      # - name: parse bracket
+      #   id: parse
+      #   run: node src/parse.js
 
-      - name: ask for next pick
-        id: next
-        run: node src/next.js '${{ steps.parse.outputs.bracket }}'
+      # - name: ask for next pick
+      #   id: next
+      #   run: node src/next.js '${{ steps.parse.outputs.bracket }}'
       
-      - name: finalize bracket
-        if: ${{ steps.next.outputs.done == 'yes' }}
-        run: node src/bracket.js '${{ steps.parse.outputs.bracket }}'
+      # - name: finalize bracket
+      #   if: ${{ steps.next.outputs.done == 'yes' }}
+      #   run: node src/bracket.js '${{ steps.parse.outputs.bracket }}'
 
-      - name: create bracket image
-        if: ${{ steps.next.outputs.done == 'yes' }}
-        run: node src/createBracketImages.js
+      # - name: create bracket image
+      #   if: ${{ steps.next.outputs.done == 'yes' }}
+      #   run: node src/createBracketImages.js
 
-      - name: update the index
-        if: ${{ steps.next.outputs.done == 'yes' }}
-        uses: ./.github/workflows/update-index
+      # - name: update the index
+      #   if: ${{ steps.next.outputs.done == 'yes' }}
+      #   uses: ./.github/workflows/update-index
 
-      - name: commit
-        if: ${{ steps.next.outputs.done == 'yes' }}
-        uses: ./.github/workflows/commit
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: commit
+      #   if: ${{ steps.next.outputs.done == 'yes' }}
+      #   uses: ./.github/workflows/commit
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
