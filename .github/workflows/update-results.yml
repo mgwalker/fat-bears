@@ -11,26 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
-        with:
-          node-version: 16
-
-      - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+      - name: checkout main branch
+        uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
         with:
           ref: main
 
-      - name: install dependencies
-        run: npm install
+      - name: prepare the workflow
+        uses: ./.github/workflows/prepare
       
-      - name: update base bracket
-        run: node src/updateResults.js
-
-      - name: update the index
-        uses: ./.github/workflows/update-index
-
-      - name: commit
-        uses: ./.github/workflows/commit
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          message: updating base bracket
+      - name: update the site
+        uses: ./.github/workflows/update-results

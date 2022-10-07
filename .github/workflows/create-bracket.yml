@@ -17,16 +17,14 @@ jobs:
 
     steps:
       - run: echo "Bracketing is closed for 2022"
-      # - uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
-      #   with:
-      #     node-version: 16
 
-      # - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+      # - name: checkout main branch
+      #   uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
       #   with:
       #     ref: main
 
-      # - name: install dependencies
-      #   run: npm install
+      # - name: prepare the workflow
+      #   uses: ./.github/workflows/prepare
 
       # - name: parse bracket
       #   id: parse
