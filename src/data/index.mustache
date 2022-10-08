@@ -78,6 +78,18 @@
         </td>
       {{/bears}}
     </tr>
+    {{#wrongBracket.length}}
+    <tr>
+      <td colspan="2">
+        <h3>Picked entirely different bears for this round:</h3>
+        <ul>
+          {{#wrongBracket}}
+          <li><a href="2022/brackets/{{user}}.png">{{user}}</a> ({{wins}}%)</li>
+          {{/wrongBracket}}
+        </ul>
+      </td>
+    </tr>
+    {{/wrongBracket.length}}
     {{/matches}}
   {{/categories}}
   </table>

@@ -69,13 +69,18 @@ const docsPath = path.join(DIR, "..", "docs");
       })
     );
 
+    const wrongBracket = [];
     for (const user of userBrackets) {
-      bearMap
-        .get(user.bracket[id].winner)
-        ?.choosers.push({ user: user.user, wins: user.winPercentage });
+      if (bearMap.has(user.bracket[id].winner)) {
+        bearMap
+          .get(user.bracket[id].winner)
+          .choosers.push({ user: user.user, wins: user.winPercentage });
+      } else {
+        wrongBracket.push({ user: user.user, wins: user.winPercentage });
+      }
     }
 
-    matchesForTemplate.push({ id, bears: matchBears });
+    matchesForTemplate.push({ id, bears: matchBears, wrongBracket });
   }
 
   const upcoming = matchesForTemplate.filter(
