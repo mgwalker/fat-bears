@@ -17,6 +17,6 @@ runs:
     - name: commit
       uses: ./.github/workflows/commit
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
       with:
         message: updating base bracket

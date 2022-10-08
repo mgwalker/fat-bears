@@ -21,3 +21,5 @@ jobs:
       
       - name: update the site
         uses: ./.github/workflows/update-results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
