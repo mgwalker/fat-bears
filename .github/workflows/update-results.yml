@@ -18,6 +18,11 @@ jobs:
 
       - name: prepare the workflow
         uses: ./.github/workflows/prepare
+
+      - name: update user brackets
+        run: |
+          rm docs/2022/brackets/*
+          node src/createBracketImages.js
       
       - name: update the site
         uses: ./.github/workflows/update-results
