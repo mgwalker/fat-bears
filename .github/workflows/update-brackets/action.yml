@@ -1,0 +1,19 @@
+name: update user bracket images
+description: update user bracket images
+
+inputs:
+  delete:
+    required: false
+    default: false
+
+runs:
+  using: composite
+  steps:
+    - name: delete existing brackets
+      if: inputs.delete === 'true'
+      run: rm docs/2022/brackets/*.png
+      shell: bash
+
+    - name: update bracket images
+      run: node src/createBracketImages.js
+      shell: bash

@@ -45,8 +45,6 @@ jobs:
 
             if(matches[match]?.bears?.includes(bear)) {
               results[match] = bear;
-              console.log(results);
-
               await fs.writeFile("src/data/results.json", JSON.stringify(results, null, 2));
               return;
             }
@@ -54,6 +52,11 @@ jobs:
             core.error(`Bear ${ bear } is not in match ${ match }. Candidates are ${ matches[match].bears.join(" and ") }.`);
             process.exit(1);
       
+      - name: update brackets
+        uses: ./.github/workflows/update-brackets
+        with:
+          delete: true
+
       - name: update the site
         uses: ./.github/workflows/update-results
         env:

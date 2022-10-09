@@ -83,6 +83,13 @@ const docsPath = path.join(DIR, "..", "docs");
     matchesForTemplate.push({ id, bears: matchBears, wrongBracket });
   }
 
+  for (const match of matchesForTemplate) {
+    for (const bear of match.bears) {
+      bear.choosers.sort(({ wins: a }, { wins: b }) => b - a);
+    }
+    match.wrongBracket.sort(({ wins: a }, { wins: b }) => b - a);
+  }
+
   const upcoming = matchesForTemplate.filter(
     ({ id }) => !matches.get(id).winner
   );
