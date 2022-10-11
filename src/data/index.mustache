@@ -74,7 +74,7 @@
           <div class="bear">{{ name }}</div>
           <hr>
           {{#choosers}}
-          <div><a href="2022/brackets/{{user}}.png">{{user}}</a> ({{wins}}%)</div>
+          <div><a href="2022/brackets/{{user}}.png">{{user}}</a> ({{wins}}%) <a href="https://github.com/{{user}}"><img src="github.png"></a></div>
           {{/choosers}}
         </td>
       {{/bears}}
@@ -85,7 +85,7 @@
         <h4>Picked entirely different bears for this round:</h4>
         <ul>
           {{#wrongBracket}}
-          <li><a href="2022/brackets/{{user}}.png">{{user}}</a> ({{wins}}%)</li>
+          <li><a href="2022/brackets/{{user}}.png">{{user}}</a> ({{wins}}%) <a href="https://github.com/{{user}}"><img src="github.png"></a></li>
           {{/wrongBracket}}
         </ul>
       </td>
