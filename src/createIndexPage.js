@@ -103,7 +103,8 @@ const docsPath = path.join(DIR, "..", "docs");
         ...match,
         bears: match.bears.map((b) => ({ ...b, winner: b.id === winner })),
       };
-    });
+    })
+    .reverse();
 
   const categories = [];
   if (upcoming.length) {

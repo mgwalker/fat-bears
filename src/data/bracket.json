@@ -114,7 +114,8 @@
     },
     "11": {
       "bears": ["747", "901"],
-      "next": false
+      "next": false,
+      "winner": "747"
     }
   }
 }
