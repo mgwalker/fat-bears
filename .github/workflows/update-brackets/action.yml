@@ -11,7 +11,7 @@ runs:
   steps:
     - name: delete existing brackets
       if: inputs.delete === 'true'
-      run: rm docs/2022/brackets/*.png
+      run: rm docs/2023/brackets/*.png
       shell: bash
 
     - name: update bracket images

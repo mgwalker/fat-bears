@@ -16,7 +16,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - run: echo "Bracketing is closed for 2022"
+      - run: echo "Bracketing is closed for 2023"
 
       - name: checkout main branch
         uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
@@ -33,7 +33,7 @@ jobs:
       - name: ask for next pick
         id: next
         run: node src/next.js '${{ steps.parse.outputs.bracket }}'
-      
+
       - name: finalize bracket
         if: ${{ steps.next.outputs.done == 'yes' }}
         run: node src/bracket.js '${{ steps.parse.outputs.bracket }}'

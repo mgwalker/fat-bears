@@ -22,7 +22,7 @@ const exists = async (path) => {
   try {
     browser = await chromium.launch();
     const page = await browser.newPage({
-      viewport: { height: 1630, width: 2100 },
+      viewport: { height: 3300, width: 2555 },
     });
 
     const url = pathToFileURL(path.join(dataPath, "bracket.html")).href;
@@ -40,7 +40,7 @@ const exists = async (path) => {
       //   })
       // );
 
-      const outputDir = path.join(docsPath, "2022", "brackets");
+      const outputDir = path.join(docsPath, "2023", "brackets");
 
       const { bears } = JSON.parse(
         await fs.readFile(path.join(dataPath, "bracket.json"))

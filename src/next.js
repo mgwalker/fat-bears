@@ -91,7 +91,7 @@ Object.entries(bears).forEach(([number, bear]) => {
   </thead>
   <tbody>
     <td width="45%">
-      <img src="https://fatbears.18f.org/2022/pics/explore-${
+      <img src="https://fatbears.18f.org/2023/pics/explore-${
         match.bears[0]
       }.png" alt="${
       bears[match.bears[0]].display
@@ -103,7 +103,7 @@ Object.entries(bears).forEach(([number, bear]) => {
     </td>
     <td align="center">vs.</td>
     <td width="45%">
-      <img src="https://fatbears.18f.org/2022/pics/explore-${
+      <img src="https://fatbears.18f.org/2023/pics/explore-${
         match.bears[1]
       }.png" alt="${
       bears[match.bears[1]].display
@@ -158,7 +158,7 @@ Object.entries(bears).forEach(([number, bear]) => {
         getLastPickAcknowledgement(matches),
         `And that's it, you've finished your bracket! Good luck to ${bear.display} to win it all!
 
-Your bracket will be available for download at https://fatbears.18f.org/2022/brackets/${user}.png in a few minutes.`,
+Your bracket will be available for download at https://fatbears.18f.org/2023/brackets/${user}.png in a few minutes.`,
       ].join(" ")
     );
     await util.closeAndLockIssue();

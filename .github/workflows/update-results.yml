@@ -21,9 +21,9 @@ jobs:
 
       - name: update user brackets
         run: |
-          rm docs/2022/brackets/*
+          rm docs/2023/brackets/*
           node src/createBracketImages.js
-      
+
       - name: update the site
         uses: ./.github/workflows/update-results
         env:
