@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta encoding="utf-8" />
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+      }
+
+      div#bracket {
+        width: 2100px;
+      }
+
+      div#bracket div {
+        height: 40px;
+        min-width: 200px;
+        position: absolute;
+      }
+
+      div#bracket div.correct:before {
+        content: "✅ ";
+      }
+
+      div#bracket div.incorrect {
+        text-decoration: line-through;
+      }
+
+      div#bracket div.incorrect:before {
+        content: "❌ ";
+      }
+
+      div#match_01_winner {
+        left: 490px;
+        top: 500px;
+      }
+      div#match_01_winner_actual {
+        left: 490px;
+        top: 450px;
+      }
+
+      div#match_02_winner {
+        left: 490px;
+        top: 1175px;
+      }
+      div#match_02_winner_actual {
+        left: 490px;
+        top: 1225px;
+      }
+
+      div#match_03_winner {
+        left: 1450px;
+        top: 500px;
+        text-align: right;
+      }
+      div#match_03_winner_actual {
+        left: 1450px;
+        top: 450px;
+        text-align: right;
+      }
+
+      div#match_04_winner {
+        left: 1450px;
+        top: 1175px;
+        text-align: right;
+      }
+      div#match_04_winner_actual {
+        left: 1450px;
+        top: 1225px;
+        text-align: right;
+      }
+
+      div#match_05_winner {
+        left: 780px;
+        top: 680px;
+      }
+      div#match_05_winner_actual {
+        left: 780px;
+        top: 630px;
+      }
+
+      div#match_06_winner {
+        left: 780px;
+        top: 1000px;
+      }
+      div#match_06_winner_actual {
+        left: 780px;
+        top: 1050px;
+      }
+
+      div#match_07_winner {
+        left: 1150px;
+        top: 680px;
+        text-align: right;
+      }
+      div#match_07_winner_actual {
+        left: 1150px;
+        top: 630px;
+        text-align: right;
+      }
+
+      div#match_08_winner {
+        left: 1150px;
+        top: 1000px;
+        text-align: right;
+      }
+      div#match_08_winner_actual {
+        left: 1150px;
+        top: 1050px;
+        text-align: right;
+      }
+
+      div#match_09_winner {
+        left: 850px;
+        top: 815px;
+      }
+      div#match_09_winner_actual {
+        left: 850px;
+        top: 865px;
+      }
+
+      div#match_10_winner {
+        left: 1100px;
+        top: 815px;
+        text-align: right;
+      }
+      div#match_10_winner_actual {
+        left: 1100px;
+        top: 865px;
+        text-align: right;
+      }
+
+      div#match_11_winner {
+        background: rgba(255, 255, 255, 0.7);
+        font-size: 3em;
+        left: 750px;
+        min-height: 1em;
+        min-width: 600px !important;
+        text-align: center;
+        top: 1390px;
+      }
+
+      div#match_11_winner_actual {
+        font-size: 3em;
+        left: 750px;
+        line-height: 0.8em;
+        min-width: 600px !important;
+        text-align: center;
+        top: 1290px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bracket">
+      <div id="match_01_winner"></div>
+      <div id="match_02_winner"></div>
+      <div id="match_03_winner"></div>
+      <div id="match_04_winner"></div>
+      <div id="match_05_winner"></div>
+      <div id="match_06_winner"></div>
+      <div id="match_07_winner"></div>
+      <div id="match_08_winner"></div>
+      <div id="match_09_winner"></div>
+      <div id="match_10_winner"></div>
+      <div id="match_11_winner"></div>
+
+      <div id="match_01_winner_actual"></div>
+      <div id="match_02_winner_actual"></div>
+      <div id="match_03_winner_actual"></div>
+      <div id="match_04_winner_actual"></div>
+      <div id="match_05_winner_actual"></div>
+      <div id="match_06_winner_actual"></div>
+      <div id="match_07_winner_actual"></div>
+      <div id="match_08_winner_actual"></div>
+      <div id="match_09_winner_actual"></div>
+      <div id="match_10_winner_actual"></div>
+      <div id="match_11_winner_actual"></div>
+
+      <!-- 2100 x 1630 -->
+      <img src="bracket.png" />
+    </div>
+    <script type="text/javascript">
+      window.setWinners = (picks, results) => {
+        console.log(picks);
+        // Clear anything that previously existed
+        Array.from(document.querySelectorAll("#bracket div")).forEach((el) => {
+          el.innerText = "";
+          el.setAttribute("class", "");
+        });
+
+        picks.forEach(([match, bearNumber, bearName]) => {
+          const id = match.padStart(2, "0");
+
+          const el = document.querySelector(`#match_${id}_winner`);
+          if (el) {
+            el.innerText = `${bearName}`;
+            if (results[match]) {
+              el.setAttribute(
+                "class",
+                results[match] === bearNumber ? "correct" : "incorrect"
+              );
+              if (results[match] !== bearNumber) {
+                document.querySelector(`#match_${id}_winner_actual`).innerText =
+                  results[match];
+              }
+            }
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

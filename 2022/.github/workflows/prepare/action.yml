@@ -1,0 +1,17 @@
+name: prepare the workflow
+description: prepare the workflow
+inputs:
+  message:
+    required: false
+    type: string
+    default: ''
+runs:
+  using: composite
+  steps:
+    - name: setup Node.js
+      uses: actions/setup-node@d6e3b5539ed7e5ccd26c3459e26c7c817f4e9068
+      with:
+        node-version: 16
+    - name: install dependencies
+      run: npm install
+      shell: bash

@@ -1,0 +1,63 @@
+name: set fat bear results
+
+on:
+  workflow_dispatch:
+    inputs:
+      match:
+        description: Match number
+        required: true
+        type: string
+      winner:
+        description: Number of the winning bear
+        required: true
+        type: string
+
+jobs:
+  update:
+    name: set results
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout main branch
+        uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+        with:
+          ref: main
+
+      - name: prepare the workflow
+        uses: ./.github/workflows/prepare
+
+      - name: update results data
+        uses: actions/github-script@7dff1a87643417cf3b95bb10b29f4c4bc60d8ebd
+        with:
+          script: |
+            const fs = require("fs/promises");
+
+            const match = "${{ inputs.match }}";
+            const bear = "${{ inputs.winner }}";
+
+            const results = JSON.parse(await fs.readFile("src/data/results.json"));
+            const { matches } = JSON.parse(await fs.readFile("src/data/bracket.json"));
+
+            if(results[match]) {
+              core.warning(`Match ${ match } was already decided; ${results[match]} won.`);
+              return;
+            }
+
+            if(matches[match]?.bears?.includes(bear)) {
+              results[match] = bear;
+              await fs.writeFile("src/data/results.json", JSON.stringify(results, null, 2));
+              return;
+            }
+
+            core.error(`Bear ${ bear } is not in match ${ match }. Candidates are ${ matches[match].bears.join(" and ") }.`);
+            process.exit(1);
+      
+      - name: update brackets
+        uses: ./.github/workflows/update-brackets
+        with:
+          delete: true
+
+      - name: update the site
+        uses: ./.github/workflows/update-results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

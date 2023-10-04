@@ -1,0 +1,26 @@
+{
+  "name": "fat-bears-2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgwalker/fat-bears.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgwalker/fat-bears/issues"
+  },
+  "homepage": "https://github.com/mgwalker/fat-bears#readme",
+  "description": "",
+  "prettier": {},
+  "dependencies": {
+    "@actions/exec": "^1.1.1",
+    "@octokit/rest": "^19.0.4",
+    "mustache": "^4.2.0",
+    "playwright-chromium": "^1.26.1"
+  }
+}

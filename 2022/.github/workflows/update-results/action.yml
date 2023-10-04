@@ -1,0 +1,22 @@
+name: update site with results
+description: update site with results
+
+runs:
+  using: composite
+  steps:
+    - name: prepare the workflow
+      uses: ./.github/workflows/prepare
+    
+    - name: update base bracket
+      run: node src/updateResults.js
+      shell: bash
+
+    - name: update the index
+      uses: ./.github/workflows/update-index
+
+    - name: commit
+      uses: ./.github/workflows/commit
+      env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+      with:
+        message: updating base bracket

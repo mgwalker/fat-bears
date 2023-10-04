@@ -1,0 +1,8 @@
+name: update index
+description: update index
+runs:
+  using: composite
+  steps:
+    - name: update index
+      run: node src/createIndexPage.js
+      shell: bash

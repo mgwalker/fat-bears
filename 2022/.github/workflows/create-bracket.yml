@@ -1,0 +1,53 @@
+name: building a bracket
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions: write-all
+
+jobs:
+  bracket-conversation:
+    name: bracket conversation
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - run: echo "Bracketing is closed for 2022"
+
+      - name: checkout main branch
+        uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+        with:
+          ref: main
+
+      - name: prepare the workflow
+        uses: ./.github/workflows/prepare
+
+      - name: parse bracket
+        id: parse
+        run: node src/parse.js
+
+      - name: ask for next pick
+        id: next
+        run: node src/next.js '${{ steps.parse.outputs.bracket }}'
+      
+      - name: finalize bracket
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        run: node src/bracket.js '${{ steps.parse.outputs.bracket }}'
+
+      - name: create bracket image
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        run: node src/createBracketImages.js
+
+      - name: update the index
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        uses: ./.github/workflows/update-index
+
+      - name: commit
+        if: ${{ steps.next.outputs.done == 'yes' }}
+        uses: ./.github/workflows/commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

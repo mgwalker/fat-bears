@@ -1,0 +1,30 @@
+name: update fat bear results
+
+on:
+  push:
+    paths:
+      - src/data/results.json
+
+jobs:
+  update:
+    name: update results
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout main branch
+        uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+        with:
+          ref: main
+
+      - name: prepare the workflow
+        uses: ./.github/workflows/prepare
+
+      - name: update user brackets
+        run: |
+          rm docs/2022/brackets/*
+          node src/createBracketImages.js
+      
+      - name: update the site
+        uses: ./.github/workflows/update-results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
